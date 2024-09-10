@@ -1,25 +1,17 @@
 #include "Arduino.h"
 #include "Spice.h"
 
-motor::motor(int pulse, int dir)
+motor::motor(int pulse[2], int dir[3])
 {
     _pulse = pulse;
     _dir = dir;
     _dual = false;
 }
 
-motor::motor(int pulse, int dir[2])
-{
-    _pulse = pulse;
-    _dir1 = dir[0];
-    _dir2 = dir[1];
-    dual = true
-}
-
 void motor::receiveCommand()
 {
     Serial.readBytes(_rec, 3)
-    _total = (_rec[1]*400) + _rec[2];
+    _total = (_rec[1]*796) + _rec[2];
     switch(_rec[0]){
         case 0x01:
             _direction = true;

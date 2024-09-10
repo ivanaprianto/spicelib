@@ -16,20 +16,13 @@ class motor
 {
     public:
         motor(int pulse, int dir);
-        motor(int pulse, int dir[2]);
 
     private:
-        bool _dual;
         int _mDelay;
         int _pulse;
         int _dir;
-        int _dir1;
-        int _dir2;
         int _total;
         int _revs;
-        uint8_t _rec[3];
-        uint8_t _coord[2];
-        uint8_t _loc[2];
         long _currStep;
         long _targetStep;
         long _currMicros;
