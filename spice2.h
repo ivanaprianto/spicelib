@@ -17,10 +17,12 @@ int stddir[3] = {24, 26, 28};
 class spice
 {
     public:
-        spice(int pulse[2] = stdpulse, int dir[3] = stddir)
-        void
+        spice(int pulse[2] = stdpulse, int dir[3] = stddir);
+        void readCommand(uint8_t, rec);
 
     private:
+        bool _isRunning;
+        bool _isWatering;
 }
 
 class motor
