@@ -18,9 +18,13 @@ class spice
 {
     public:
         spice(int pulse[2] = stdpulse, int dir[3] = stddir);
-        void readCommand(uint8_t, rec);
+        int coords();
+        void autoMode();
+        void readCommand();
+        bool isRunning();
 
     private:
+        uint8_t _rec[3];
         bool _isRunning;
         bool _isWatering;
 }
@@ -29,10 +33,15 @@ class motor
 {
     public:
         motor(int pulse[2], int dir[3]);
+        void drive()
         void moveX(int steps);
         void moveY(int steps);
+        int locX();
+        int locY();
 
     private:
+        int _posX;
+        int _posY;
         uint8_t _pulse[2];
         uint8_t _dir[3];
 
@@ -44,6 +53,7 @@ class sensor
         npk();
         o2();
         co2();
+        readAll();
 
     private:
 
