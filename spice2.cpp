@@ -36,7 +36,7 @@ void spice::readCommand()
     {
         int targetX = _rec[0]*796;
         int targetY = _rec[1]*796;
-        
+        main.drive(targetX, targetY);
     }
     
 }
@@ -44,6 +44,13 @@ void spice::readCommand()
 bool spice::isRunning()
 {
     return _isRunning;
+}
+
+int spice::coords()
+{
+    _posX = main.locX();
+    _posY = main.locY();
+    Serial.println(String(_posX) + " " + String(_posY));
 }
 
 motor::motor(int pulse[2], int dir[3])
@@ -68,7 +75,7 @@ void motor::drive(int x, int y)
         bool dirY = _posY > y ? false : true;
         digitalWrite(dor[2],  dirY);
         moveY(y);
-        serial.write(b'\xAA')
+        Serial.write(b'\xAA')
     }
     
 }
@@ -104,3 +111,5 @@ int motor::locY()
 {
     return _posY/796;
 }
+
+sensor::sensor()

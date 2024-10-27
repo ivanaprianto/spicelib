@@ -50,12 +50,16 @@ class motor
 class sensor
 {
     public:
-        npk();
-        o2();
-        co2();
-        readAll();
+        sensor(int npk[4] = npkstd, int, int analog)
+        void npk();
+        int o2();
+        int co2();
+        void readAll();
 
     private:
-
+        int _di;
+        int _de;
+        int _re;
+        int _ro;
 }
 #endif
