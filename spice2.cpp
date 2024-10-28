@@ -112,4 +112,16 @@ int motor::locY()
     return _posY/796;
 }
 
-sensor::sensor()
+sensor::sensor(int npk[4], int analog)
+{
+    _di = npk[0];
+    _de = npk[1];
+    _re = npk[2];
+    _ro = npk[3];
+    _co2 = analog;
+}
+
+float sensor::co2()
+{
+    analogRead(_co2);
+}
